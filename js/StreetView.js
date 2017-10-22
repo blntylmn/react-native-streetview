@@ -14,7 +14,7 @@ const propTypes = {
   ...View.propTypes,
 
   // Center point
-  coordinate: PropTypes.shape({latitude: React.PropTypes.number.isRequired, longitude: React.PropTypes.number.isRequired}),
+  coordinate: PropTypes.shape({latitude: PropTypes.number.isRequired, longitude: PropTypes.number.isRequired}),
 
   // Allowing user gestures (panning, zooming)
   allGesturesEnabled: PropTypes.bool,
