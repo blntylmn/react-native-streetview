@@ -8,40 +8,32 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, requireNativeComponent} from 'react-native';
+import { View, requireNativeComponent } from 'react-native';
 
 const propTypes = {
-  ...View.propTypes,
+	...View.propTypes,
 
-  // Center point
-  coordinate: PropTypes.shape({latitude: PropTypes.number.isRequired, longitude: PropTypes.number.isRequired}),
+	// Center point
+	coordinate: PropTypes.shape({
+		latitude: PropTypes.number.isRequired,
+		longitude: PropTypes.number.isRequired,
+	}),
 
-  // Allowing user gestures (panning, zooming)
-  allGesturesEnabled: PropTypes.bool,
-  onLocationChanged: PropTypes.func
+	// Allowing user gestures (panning, zooming)
+	allGesturesEnabled: PropTypes.bool,
 };
 
 class StreetView extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this._onChange = this._onChange.bind(this);
-  }
+	constructor(props) {
+		super(props);
+	}
 
-  _onChange(event) {
-    if(!this.props.onLocationChanged) {
-      return;
-    }
-    this.props.onLocationChanged(event.nativeEvent.invalid);
-  }
-
-  render() {
-    return <NSTStreetView {...this.props}  onChange={this._onChange}  />;
-  }
+	render() {
+		return <NSTStreetView {...this.props} />;
+	}
 }
 
 StreetView.propTypes = propTypes;
 
-module.exports = requireNativeComponent('NSTStreetView', StreetView, {
-  nativeOnly: {onChange: true}
-});
+module.exports = requireNativeComponent('NSTStreetView', StreetView);
